@@ -17,7 +17,6 @@ SELECT customer_id,SUM(quantity) AS quantity_purchased
 FROM orders
 GROUP BY customer_id;
 ```
-![](https://github.com/Arijeet226/SQL-project-4-23.07.2025/blob/ce3a0e87e0f30f791cd3557665b60ad205cff18b/graphics/TICKET_SOLD.png)
 ## Q3.REVENUE PER CUSTOMER
 ```sql
 SELECT c.customer_id, CONCAT(c.first_name,' ',c.last_name) AS customer_name,
@@ -45,20 +44,20 @@ GROUP BY p.name
 ORDER BY unit_sold DESC
 LIMIT 5;
 ```
+![](https://github.com/Arijeet226/SQL-project-5-25.07.2025/blob/2cc9b13f9f48b07c59abe64fb0c35d0a36b7cf48/assets/image%203.png)
 ## Q6.PRODUCT NEVER ORDERED
 ```sql
 SELECT product_id,name
 FROM products
 WHERE product_id NOT IN(SELECT DISTINCT product_id FROM orders);
 ```
-![](https://github.com/Arijeet226/SQL-project-4-23.07.2025/blob/ce3a0e87e0f30f791cd3557665b60ad205cff18b/graphics/TOTAL%20FLIGHTS.png)
+![](https://github.com/Arijeet226/SQL-project-5-25.07.2025/blob/2cc9b13f9f48b07c59abe64fb0c35d0a36b7cf48/assets/image%201A.png)
 ## Q7.AVERAGE BASKET SIZE PER CUSTOMER
 ```sql
 SELECT customer_id,ROUND(AVG(quantity),2) AS avg_quantity
 FROM orders
 GROUP BY customer_id;
 ```
-![](https://github.com/Arijeet226/SQL-project-4-23.07.2025/blob/ce3a0e87e0f30f791cd3557665b60ad205cff18b/graphics/PRICE%20paid%20by%20ticket_id.png)
 ## Q8.TOTAL REVENUE BY PRODUCT CATEGORY
 ```sql
 SELECT p.category,ROUND(SUM(o.quantity*p.unit_price),2) AS revenue
@@ -67,7 +66,6 @@ JOIN products p ON o.product_id=p.product_id
 GROUP BY category
 ORDER BY revenue DESC;
 ```
-![](https://github.com/Arijeet226/SQL-project-4-23.07.2025/blob/ce3a0e87e0f30f791cd3557665b60ad205cff18b/graphics/membership.png)
 ## Q9.DAILY ORDER AND REVENUE FOR A GIVEN WEEK(2024-06-07)TO(2024-07-13)
 ```sql
 SELECT o.order_date,COUNT(*)AS orders,SUM(o.quantity*p.unit_price) AS revenue
@@ -76,6 +74,7 @@ JOIN products p ON o.product_id=p.product_id
 WHERE order_date BETWEEN '2024-06-07' AND '2024-06-13'
 GROUP BY order_date;
 ```
+![](https://github.com/Arijeet226/SQL-project-5-25.07.2025/blob/2cc9b13f9f48b07c59abe64fb0c35d0a36b7cf48/assets/image%202.png)
 ## Q10.AVERAGE ORDER VALUE
 ```sql
 SELECT (ROUND(SUM(o.quantity*p.unit_price),2))/(COUNT(DISTINCT order_id))AS avg_order_value
